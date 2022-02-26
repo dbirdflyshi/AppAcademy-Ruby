@@ -1,4 +1,11 @@
-# Writing to the console
+################################################################################
+#                                                                              #
+#                           Writing to the console                             #
+#                                                                              #
+################################################################################
+######################################
+#               Lesson               #
+######################################
 puts "this text goes in the console" # always breaks the line after 
 print 'this text goes in the console' # doesnt break the line after
 p 'this text goes in the console' # encapsulates it in double quotes 
@@ -39,7 +46,14 @@ puts true || false # True
 puts false || false # False
 puts true || false && !true # True
 
-# Strings
+################################################################################
+#                                                                              #
+#                                  Strings                                     #
+#                                                                              #
+################################################################################
+######################################
+#               Lesson               #
+######################################
 puts "Hello World!" # Writes a string
 puts "Hello World!".length # Output : 12 : Writes the length of the string
 # Index Positioning
@@ -68,8 +82,14 @@ puts var2 + var4 # 21
 puts var5 # 11
 puts var6 # Reuw
 
-# Methods
-
+################################################################################
+#                                                                              #
+#                                  Methods                                     #
+#                                                                              #
+################################################################################
+######################################
+#               Lesson               #
+######################################
 # Defining the method 
 def sayMessage
     puts "Hey Programmers"
