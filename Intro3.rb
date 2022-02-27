@@ -146,7 +146,6 @@ def find_and_replace(string,find,replace)
 end
 puts find_and_replace('hello darkness my old friend',' ','-')
 
-
 ############################
 #         Enumerable       #
 #          Methods         #
@@ -272,3 +271,70 @@ end
 ############################
 #      First In Array      #
 ############################
+# Write a method first_in_array that takes in an array and two elements, 
+# the method should return the element that appears earlier in the array.
+def first_in_array(arr, el1, el2)
+  if arr.index(el1) < arr.index(el2)
+    puts el1
+  else
+  	puts el2
+  end
+end
+
+puts first_in_array(["a", "b", "c", "d"], "d", "b"); # => "b"
+puts first_in_array(["cat", "bird" ,"dog", "mouse" ], "dog", "mouse"); # => "dog"
+
+############################
+#   Abbreviate Sentence    #
+############################
+# Write a method abbreviate_sentence that takes in a sentence string and 
+# returns a new sentence where every word longer than 4 characters has all
+# of it's vowels removed.
+def abbreviate_sentence(sent)
+	parts = sent.split(" ")
+  	parts.each_with_index do |part, idx|
+      	if part.length > 4
+            split = part.split(/[aeiou]/)
+    		rejoined = split.join('')
+          	parts[idx] = rejoined          	
+        end
+    end
+    return parts.join(' ')
+end
+
+puts abbreviate_sentence("follow the yellow brick road") # => "fllw the yllw brck road"
+puts abbreviate_sentence("what a wonderful life")        # => "what a wndrfl life"
+
+
+############################
+#        Format Name       #
+############################
+# Write a method format_name that takes in a name string and returns the 
+# name properly capitalized.
+def format_name(str)
+    parts = str.split(' ')
+    parts.each_with_index do |part,idx|
+        part = part.downcase
+        letters = part.split('')
+        letters[0] = letters[0].upcase
+        part = letters.join('')
+        parts[idx] = part
+	end
+  	return parts.join(' ') 
+end
+
+puts format_name("chase WILSON") # => "Chase Wilson"
+puts format_name("brian CrAwFoRd scoTT") # => "Brian Crawford Scott"
+
+# The solution provided is a big more elegant 
+def format_name(str)
+  parts = str.split(" ")
+  new_parts = []
+
+  parts.each do |part|
+    new_parts << part[0].upcase + part[1..-1].downcase
+  end
+
+  return new_parts.join(" ")
+end
+
