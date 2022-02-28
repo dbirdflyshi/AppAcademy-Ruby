@@ -338,3 +338,97 @@ def format_name(str)
   return new_parts.join(" ")
 end
 
+############################
+#        Valid Name        #
+############################
+# Write a method is_valid_name that takes in a string and returns a boolean 
+# indicating whether or not it is a valid name.
+# A name is valid is if satisfies all of the following:
+# - contains at least a first name and last name, separated by spaces
+# - each part of the name should be capitalized
+#
+# Hint: use str.upcase or str.downcase
+# "a".upcase # => "A"
+def is_valid_name(str)
+	parts = str.split(" ")
+  	new_parts = []
+  	parts.each do |part|
+    	new_parts << part[0].upcase + part[1..-1].downcase
+  	end
+  	valid_name = new_parts.join(" ")
+  	if str == valid_name && str.split(' ').length >=2
+       true
+    else
+      false
+    end
+end
+
+puts is_valid_name("Kush Patel")       # => true
+puts is_valid_name("Daniel")           # => false
+puts is_valid_name("Robert Downey Jr") # => true
+puts is_valid_name("ROBERT DOWNEY JR") # => false
+
+############################
+#        Valid Email       #
+############################
+# Write a method is_valid_email that takes in a string and returns a boolean 
+# indicating whether or not it is a valid email address.
+
+# For simplicity, we'll consider an email valid when it satisfies all of the following:
+# - contains exactly one @ symbol
+# - contains only lowercase alphabetic letters before the @
+# - contains exactly one . after the @
+
+def is_valid_email(str) 
+  if str.scan(/[@]/).count !=1 || 
+     str.scan(/[.]/).count !=1 ||
+     str.split('@')[0].scan(/[1234567890]/).count >=1
+	  crit1 = false
+  else
+      crit1 = true
+  end
+end
+
+ puts is_valid_email("abc@xy.z")         # => true
+ puts is_valid_email("jdoe@gmail.com")   # => true
+ puts is_valid_email("jdoe@g@mail.com")  # => false
+ puts is_valid_email("jdoe42@gmail.com") # => false
+ puts is_valid_email("jdoegmail.com")    # => false
+ puts is_valid_email("az@email")         # => false
+
+############################
+#        Valid Email       #
+############################
+# Write a method reverse_words that takes in a sentence string and returns the 
+# sentence with the order of the characters in each word reversed. Note that we 
+# need to reverse the order of characters in the words, do not reverse the order 
+# of words in the sentence.
+ def reverse_words(sent)
+  	parts = sent.split(" ")
+  	new_parts = []
+  	parts.each do |part|
+    	new_parts << part.reverse
+    end
+    return new_parts.join(' ')
+end
+
+puts reverse_words('keep coding') # => 'peek gnidoc'
+puts reverse_words('simplicity is prerequisite for reliability') # => 'yticilpmis si etisiuqererp rof ytilibailer'
+
+############################
+#        Valid Email       #
+############################
+# Write a method rotate_array that takes in an array and a number. The method 
+# should return the array after rotating the elements the specified number of 
+# times. A single rotation takes the last element of the array and moves it to 
+# the front.
+def rotate_array(arr, num)
+  	num.times {arr.unshift(arr.pop)}
+  	return arr 
+end
+
+print rotate_array([ "Matt", "Danny", "Mashu", "Matthias" ], 1) # => [ "Matthias", "Matt", "Danny", "Mashu" ]
+puts
+
+print rotate_array([ "a", "b", "c", "d" ], 2) # => [ "c", "d", "a", "b" ]
+puts
