@@ -103,9 +103,10 @@ printChars('This is super cool') # output : Ths s spr cl
 ######################################
 #             Exercises              #
 ######################################
-# Coutning the amount of letters in a string
+# Counting the amount of letters in a string
 def count_e(letter,word)
 
+  word = 'movie'
   is = 0
   i = 0
   while i < word.length
@@ -115,7 +116,7 @@ def count_e(letter,word)
     end
   i += 1
   end
-  return is 
+  puts is 
   
 end
 
