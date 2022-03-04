@@ -4,7 +4,7 @@
 #                                                                              #
 ################################################################################
 ######################################
-#               Lesson               #
+#               Lessons              #
 ######################################
 ############################
 #      Nested Loops        #
@@ -208,3 +208,116 @@ puts pig_latin_word("apple")   # => "appleyay"
 puts pig_latin_word("eat")     # => "eatyay"
 puts pig_latin_word("banana")  # => "ananabay"
 puts pig_latin_word("trash")   # => "ashtray"
+
+######################################
+#               Lessons              #
+######################################
+############################
+#          Hashes          #
+############################
+# Key => value pair
+
+my_hash = {
+    'school' => ['App Academy','Turing'], 
+    'color' => ['red'], 
+    'age' => 29,
+    'isAwesome' => true,
+    42 => 'hello'
+}
+# Printing a value
+puts my_hash['school'][1]
+
+# Changing the value
+my_hash['color'] = ['blue']
+puts my_hash['color']
+
+# Adding a key-value pair to a hash
+my_hash['student'] = 'Dane'
+puts my_hash
+
+# Adding a value to a key
+my_hash['color'] << 'green'
+puts my_hash
+
+# Searching inside hashes
+puts my_hash.has_key?('color')
+puts my_hash.has_value?('green')
+
+# Showing only one side 
+puts my_hash.keys
+puts my_hash.values
+
+# Let's make a new hash 
+animal = {
+    'Name' => 'Giraffe',
+    'Height' => 10.5,
+    'Diet' => ['Plants','Bugs'],
+    'Location' => 'Africa',
+    'isEndangered' => false,
+    'colors' => ['Brown','Yellow','Tan']
+}
+# Looping only the key 
+animal.each_key do |k|
+    puts k
+end
+# Looping only the value
+animal.each_value do |v|
+    puts v
+end
+# Looping everything
+animal.each do |k,v|
+    puts k 
+    puts v 
+    puts "------------"
+end
+
+# default value of a value is nil 
+puts animal['domesticated'] == nil #true 
+
+# What is Nil?
+# Nil represents 'nothing' or 'empty'.
+# It commonly appears as a default value
+
+
+# Setting a default value 
+empty_hash = Hash.new('Empty')
+puts empty_hash['a']
+
+## Take a string and make a hash that counts all unique letters
+str = 'hello darkness my old friend'
+counter = Hash.new(0)
+str.each_char { |char| counter[char]+=1}
+puts counter 
+
+# Deconstructing it to see what it is doing
+str.each_char do |char|
+    puts char
+    counter[char] +=1
+    puts counter 
+end
+
+# Sorting this counter by key
+print counter.sort_by {|k,v| k}
+# sorting this counter by value
+sorted = counter.sort_by {|k,v| v}
+
+# Printing the key that came up most often
+puts sorted[-1][0]
+
+
+######################################
+#             Exercises              #
+######################################
+############################
+#        Double Age        #
+############################
+# Write a method get_double_age that takes in a hash and returns twice 
+# the "age" value of the hash.
+
+def get_double_age(hash)
+	return hash['age'] * 2
+end
+
+puts get_double_age({"name"=>"App Academy", "age"=>5}) # => 10
+puts get_double_age({"name"=>"Ruby", "age"=>23})       # => 46
+
