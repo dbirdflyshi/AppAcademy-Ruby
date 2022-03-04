@@ -12,6 +12,7 @@
 ### This repository will hold all things ruby and rails
 The files are related to the following sections 
 1. Intro To Programming 
-- Intro1.rb
-- Intro2.rb
-- Intro3.rb
+- Intro1.rb `Writing To The Console, Strings, Methods`
+- Intro2.rb `Conditionals, Loops, Arrays`
+- Intro3.rb `Enumerables & Ranges`
+- Intro4.rb `Nested Loops & Hashes`
