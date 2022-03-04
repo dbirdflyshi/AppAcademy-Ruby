@@ -1,23 +1,19 @@
 ################################################################################
 #                                                                              #
-#                           Nested Loops & Hashes                              #
+#                                Nested Loops                                  #
 #                                                                              #
 ################################################################################
 ######################################
-#               Lessons              #
+#               Lesson               #
 ######################################
-############################
-#      Nested Loops        #
-#         Methods          #
-############################
-# Lesson 1, simple nested loop
+# 1: Simple nested loop
 (1..3).each do |num1|
     (1..5).each do |num2|
         puts num1.to_s+" " +num2.to_s
     end
 end
 
-# Lesson 2, more practical example
+# 2: More practical example
 # Building the array to loop through
 arr = ['a','b','c','d']
 # We will loop through the same array twice
@@ -31,10 +27,8 @@ arr.each_with_index do |ele1, idx1|
     end
 end
 
-############################
-#      2 Dimensional       #
-#          Arrays          #
-############################
+
+# 3: 2 Dimensional arrays
 arr = [
     ['a','b','c'],
     ['d','e'],
@@ -209,12 +203,14 @@ puts pig_latin_word("eat")     # => "eatyay"
 puts pig_latin_word("banana")  # => "ananabay"
 puts pig_latin_word("trash")   # => "ashtray"
 
+################################################################################
+#                                                                              #
+#                                   Hashes                                     #
+#                                                                              #
+################################################################################
 ######################################
 #               Lessons              #
 ######################################
-############################
-#          Hashes          #
-############################
 # Key => value pair
 
 my_hash = {
