@@ -1,4 +1,5 @@
-# This repository is to store all ruby code made through the learning platform App Academy's Open Source Curriculum
+## This repository is to store all ruby code made through the learning platform App Academy's Open Source Curriculum
+<hr>
 [App Academy Open] (https://open.appacademy.io/)
 ### There are multiple sections of this curriculum
 1. Intro To Programming
