@@ -561,3 +561,56 @@ arr2 = ["dog", "cat", "mouse"]
 hash2 = {"dog"=>"bork", "cat"=>"meow", "duck"=>"quack"}
 print element_replace(arr2, hash2) # => ["bork", "meow", "mouse"]
 puts
+
+
+################################################################################
+#                                                                              #
+#                                Map & Select                                  #
+#                                                                              #
+################################################################################
+######################################
+#               Lessons              #
+######################################
+# Before, you would use shovel
+new_arr = []
+arr.each { |ele| new_arr << ele.upcase + "!"}
+print new_arr
+puts 
+
+# Now, with map you can simplify it all
+arr = ['a','b','c','d']
+new_arr = arr.map{ |ele| ele.upcase+"!"}
+print new_arr 
+
+arr = ['apple','bootCAMP','CaRrot','DaNce']
+new_arr = arr.map{ |word| word[0].upcase + word[1..-1].downcase}
+print new_arr
+puts 
+
+arr = ['apple','bootCAMP','CaRrot','DaNce']
+new_arr = arr.map.with_index do |ele, idx| 
+  first_char = ele[0].upcase
+  rest = ele[1..-1].downcase
+  new_word = first_char + rest # we need to make sure what we want to save is the last piece
+  new_word * idx 
+end 
+print new_arr
+puts 
+
+# Select : filtering elements of an array based on a criteria
+# Before select, you would do this to store only even numbers
+nums = [1,2,3,4,5,6]
+evens = []
+nums.each do |num|
+  if num % 2 == 0
+    evens << num
+  end 
+end 
+print evens  # [2,4,6]
+puts 
+
+# Now, with select we can do this 
+nums = [1,2,3,4,5,6]
+evens = numns.select { |ele| ele % 2 == 0}
+print evens 
+puts 
