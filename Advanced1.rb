@@ -180,3 +180,137 @@ p my_bootcamp[:color]   #=> "red
 hash[:key]
 ## BAD
 hash[key:]
+
+################################################################################
+#                                                                              #
+#                               Default Arguments                              #
+#                                                                              #
+################################################################################
+# When writing methods or functions, you might need to make an argument optional.
+# You can make what are called default arguments by assigning it a value on
+# creation.
+
+def repeat(message,num=1)
+    message * num
+end
+p repeat('hi') # =>'hi'
+p repeat('hi',3) # => 'hihihi'
+
+# You can use any default value for an optional argument. It's common to set an
+# argument to 'nil' by default and have logic based on that scenario.
+# In the example below, we're using an if statement to see if person 2 is used or not
+# if it is not used, nil? will return true and do one thing, otherwise it will do the other
+## Protip: Put your optional arguments at the end ## 
+def greet(person_1, person_2=nil)
+    if person_2.nil?
+        p "Hey " + person_1
+    else
+        p "Hey " + person_1 + " and " + person_2
+    end
+end
+
+greet("Dane") # => "Hey Chao"
+greet("Dane", "Cami") # => "Hey Chao and Arittro"
+
+
+################################################################################
+#                                                                              #
+#                                 Option Hashes                                #
+#                                                                              #
+################################################################################
+# If you have a method that accepts a hash as an argument, you can omit the
+# braces when passing in the hash.
+def method(hash)
+    p hash
+end
+
+# here's the proper way to put a hash in a method
+method({"location"=>"SF", "color"=>"red", "size"=>100})
+
+# Here's a better way
+method("location"=>"SF", "color"=>"red", "size"=>100)
+
+# This allows you to clean things up when you have other arguments before the hash
+def modify_string(str, options)
+    str.upcase! if options["upper"]
+    p str * options["repeats"]
+end
+
+# less readable
+modify_string("bye", {"upper"=>true, "repeats"=>3}) # => "BYEBYEBYE"
+
+# more readable
+modify_string("bye", "upper"=>true, "repeats"=>3)   # => "BYEBYEBYE"
+
+# Putting it all together, with default arguments and hashes, you can make even
+# cooler more elegant code
+
+def modify_string(str, options = {'upper' => false, 'repeats' =>1})
+    str.upcase! if options['upper']
+    p str * options['repeats']
+end
+
+modify_string('bye')
+modify_string('bye','upper'=>true,'repeats'=>3)
+
+################################################################################
+#                                                                              #
+#                                 Splat Operator                               #
+#                                                                              #
+################################################################################
+# Splat operator is the * symbol.
+
+# We can use it to accept additional arguments
+# Normally, without the splat operator, your could would look like this 
+def method(arg_1, arg_2)
+    p arg_1
+    p arg_2
+end
+
+method("a", "b", "c", "d", "e") # ArgumentError: wrong number of arguments
+
+# It is good coding practice to make your scripts foolproof. To do this is to use
+# the splat. in this example, it turns the rest of the arguments into an array.
+# this can prevent the code from breaking if the user decides to put too many 
+# arguments inside of the function.
+def method(arg_1, arg_2, *other_args)
+    p arg_1         # "a"
+    p arg_2         # "b"
+    p other_args    # ["c", "d", "e"]
+end
+
+method("a", "b", "c", "d", "e") 
+
+method("a", "b") # => 'a' 'b' []
+
+## Protip: Similarly to default arguments, put the splat operator argument at the end
+
+# You can also use a splat to decompose an array.
+# This example will give an error
+def greet(first_name, last_name)
+    p "Hey " + first_name + ", your last name is " + last_name
+end
+
+names = ["grace", "hopper"]
+greet(names)    # ArgumentError: wrong number of arguments (given 1, expected 2)
+
+# Use a splat like this and it will work!
+def greet(first_name, last_name)
+    p "Hey " + first_name + ", your last name is " + last_name
+end
+
+names = ["Grace", "Hopper"]
+greet(*names)    # => "Hey Grace, your last name is Hopper"
+
+# Another example: unpack an array using *, imagine using * to remove the 
+# square brackets from the array. 
+arr_1 = ["a", "b"]
+arr_2 = ["d", "e"]
+arr_3 = [ *arr_1, "c", *arr_2 ]
+p arr_3 # => ["a", "b", "c", "d", "e"]
+
+# You can also splat decompose hashes! But careful, this one requires double splat
+old_hash = { a: 1, b: 2 }
+new_hash = { **old_hash, c: 3 }
+p new_hash # => {:a=>1, :b=>2, :c=>3}
+
